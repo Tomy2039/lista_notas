@@ -3,7 +3,12 @@ import json
 import os
 
 # Ruta del archivo JSON dentro de la carpeta "data"
-json_path = os.path.join("data", "datos.json")
+json_path = os.path.join("..", "data", "datos.json") 
+
+# Crear la carpeta "data" si no existe (usando ruta relativa a 'python')
+data_path = os.path.join("..", "data")
+if not os.path.exists(data_path):
+    os.makedirs(data_path)
 
 # Lista para almacenar los datos ingresados por el usuario
 personas = []
@@ -30,5 +35,5 @@ for p in personas:
 
 print("\nEjecutando la parte en JavaScript para ordenar los datos...\n")
 
-# Ejecutamos el script de JavaScript
-subprocess.run(["node", "javascript/programa.js"])
+js_path = os.path.join("..", "javascript", "programa.js")
+subprocess.run(["node", js_path])
